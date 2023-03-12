@@ -3,7 +3,12 @@ const qrcode = require('qrcode-terminal');
 const CronJob = require('cron').CronJob;
 require('dotenv').config();
 
-const client = new Client({ authStrategy: new LocalAuth() });
+const client = new Client({
+	authStrategy: new LocalAuth(),
+	puppeteer: {
+		args: ['--no-sandbox'],
+	},
+});
 
 const API_DOLAR = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales';
 const API_WEATHER_KEY = process.env.API_WEATHER_KEY;
